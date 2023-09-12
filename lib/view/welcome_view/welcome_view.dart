@@ -1,22 +1,22 @@
 import 'package:coffee_shop_app/view_model/controllers/splash_view_controller/login_view_controller.dart';
-import 'package:coffee_shop_app/view_model/user_preferences/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class WelcomeView extends StatefulWidget {
+  const WelcomeView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<WelcomeView> createState() => _WelcomeViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-  LoginViewController loginViewController = Get.put(LoginViewController());
+class _WelcomeViewState extends State<WelcomeView> {
+  final LoginViewController loginViewController =
+      Get.find(); // Use Get.find to get the controller
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Container(
           height: double.infinity,
@@ -47,26 +47,11 @@ class _LoginViewState extends State<LoginView> {
                             color: const Color(0xff230C02)),
                       ),
                       const SizedBox(
-                        height: 20,
-                      ),
-                      ReusableContainer(
-                          hintText: "Email",
-                          controller: loginViewController
-                              .textEditingControllerEmail.value),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ReusableContainer(
-                          hintText: "Password",
-                          controller: loginViewController
-                              .textEditingControllerPassword.value),
-                      SizedBox(
-                        height: 50,
+                        height: 160,
                       ),
                       InkWell(
                         onTap: () {
-                          loginViewController.loginApi();
-                          UserPreferences.getToken();
+                          loginViewController.goToLoginView(context);
                         },
                         child: Container(
                           height: 47,
@@ -125,48 +110,6 @@ class _LoginViewState extends State<LoginView> {
                   ))
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class ReusableContainer extends StatefulWidget {
-  final controller;
-  var suffix;
-  final hintText;
-  ReusableContainer(
-      {super.key,
-      required this.hintText,
-      required this.controller,
-      this.suffix});
-
-  @override
-  State<ReusableContainer> createState() => _ReusableContainerState();
-}
-
-class _ReusableContainerState extends State<ReusableContainer> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        border: Border.all(color: const Color(0xff230C02), width: 2),
-      ),
-      child: Padding(
-        padding: EdgeInsets.only(left: 5, top: 5),
-        child: TextFormField(
-          controller: widget.controller,
-          decoration: InputDecoration(
-              border: InputBorder.none,
-              suffixIcon: widget.suffix,
-              hintText: widget.hintText,
-              hintStyle: GoogleFonts.poppins(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(0xff230C02))),
         ),
       ),
     );
