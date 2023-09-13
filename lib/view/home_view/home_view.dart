@@ -4,6 +4,7 @@ import 'package:coffee_shop_app/view/favorites_screen/favorites_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -202,8 +203,8 @@ class _HomeViewState extends State<HomeView> {
                                         width: 70,
                                         child: FittedBox(
                                           fit: BoxFit.cover,
-                                          child:
-                                              Image(image: AssetImage(image)),
+                                          child: SvgPicture.asset(
+                                              image.toString()),
                                         ),
                                       ),
                                     ),

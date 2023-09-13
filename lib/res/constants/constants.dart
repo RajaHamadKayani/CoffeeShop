@@ -20,8 +20,8 @@ class Constants {
   ];
   static List<String> images = [
     "assets/svgs/image1.svg",
-    "assets/images/image2.png",
-    "assets/images/image3.png",
-    "assets/images/image4.png",
+    "assets/svgs/image2.svg",
+    "assets/svgs/image3.svg",
+    "assets/svgs/image4.svg",
   ];
 }
