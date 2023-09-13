@@ -1,5 +1,8 @@
 import 'package:coffee_shop_app/res/constants/constants.dart';
+import 'package:coffee_shop_app/res/routes_names/route_names.dart';
+import 'package:coffee_shop_app/view/favorites_screen/favorites_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatefulWidget {
@@ -151,11 +154,18 @@ class _HomeViewState extends State<HomeView> {
                         scrollDirection: Axis.vertical,
                         itemCount: Constants.images.length,
                         itemBuilder: (context, index) {
+                          final image = Constants.images[index].toString();
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 27),
                             child: ClipRRect(
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.toNamed(RouteNames.favourite, arguments: [
+                                    Constants.allCoffeesTitle[index],
+                                    Constants.allCoffeesSubtitle[index],
+                                    Constants.images[index]
+                                  ]);
+                                },
                                 child: Container(
                                   height: 104,
                                   width: double.infinity,
@@ -192,10 +202,8 @@ class _HomeViewState extends State<HomeView> {
                                         width: 70,
                                         child: FittedBox(
                                           fit: BoxFit.cover,
-                                          child: Image(
-                                              image: AssetImage(Constants
-                                                  .images[index]
-                                                  .toString())),
+                                          child:
+                                              Image(image: AssetImage(image)),
                                         ),
                                       ),
                                     ),

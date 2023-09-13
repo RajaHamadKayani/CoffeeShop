@@ -1,5 +1,6 @@
 import 'package:coffee_shop_app/res/routes_names/route_names.dart';
 import 'package:coffee_shop_app/view/dashboard/dashboard.dart';
+import 'package:coffee_shop_app/view/favorites_screen/favorites_screen.dart';
 import 'package:coffee_shop_app/view/home_view/home_view.dart';
 import 'package:coffee_shop_app/view/login_view/login_view.dart';
 import 'package:coffee_shop_app/view/welcome_view/welcome_view.dart';
@@ -37,6 +38,16 @@ class Routes {
           name: RouteNames.dashborad,
           page: () {
             return const DashBoard();
+          },
+          transition: Transition.leftToRightWithFade),
+      GetPage(
+          name: RouteNames.favourite,
+          page: () {
+            return FavoritesScreen(
+              title: "",
+              subtitle: "",
+              image: "",
+            );
           },
           transition: Transition.leftToRightWithFade)
     ];

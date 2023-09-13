@@ -18,7 +18,11 @@ class _DashBoardState extends State<DashBoard> {
     return [
       const HomeView(),
       const ShoppingCartScreen(),
-      const FavoritesScreen(),
+      FavoritesScreen(
+        title: "",
+        subtitle: "",
+        image: "",
+      ),
       const ProfileScreen()
     ];
   }
