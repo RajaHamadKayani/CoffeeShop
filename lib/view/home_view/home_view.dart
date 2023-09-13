@@ -42,7 +42,7 @@ class _HomeViewState extends State<HomeView> {
                         style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
-                            color: Color(0xff230C02)),
+                            color: const Color(0xff230C02)),
                       ),
                       const SizedBox(
                         width: 32,
@@ -51,12 +51,14 @@ class _HomeViewState extends State<HomeView> {
                       const SizedBox(
                         width: 5,
                       ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.menu,
-                            color: Color(0xff230C02),
-                          ))
+                      Expanded(
+                        child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.menu,
+                              color: Color(0xff230C02),
+                            )),
+                      )
                     ],
                   ),
                   const SizedBox(
@@ -152,45 +154,49 @@ class _HomeViewState extends State<HomeView> {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 27),
                             child: ClipRRect(
-                              child: Container(
-                                height: 104,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: const Color(0xffFFF5E9)),
-                                child: ListTile(
-                                  title: Padding(
-                                    padding: EdgeInsets.only(top: 10, left: 18),
-                                    child: Text(
-                                      Constants.allCoffeesTitle[index],
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xff230C02)),
+                              child: InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  height: 104,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: const Color(0xffFFF5E9)),
+                                  child: ListTile(
+                                    title: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 10, left: 18),
+                                      child: Text(
+                                        Constants.allCoffeesTitle[index],
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: const Color(0xff230C02)),
+                                      ),
                                     ),
-                                  ),
-                                  subtitle: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10, left: 18),
-                                    child: Text(
-                                      Constants.allCoffeesSubtitle[index],
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xff230C02)),
+                                    subtitle: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 10, left: 18),
+                                      child: Text(
+                                        Constants.allCoffeesSubtitle[index],
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                            color: const Color(0xff230C02)),
+                                      ),
                                     ),
-                                  ),
-                                  trailing: Padding(
-                                    padding: EdgeInsets.only(top: 30),
-                                    child: Container(
-                                      height: double.infinity,
-                                      width: 70,
-                                      child: FittedBox(
-                                        fit: BoxFit.cover,
-                                        child: Image(
-                                            image: AssetImage(Constants
-                                                .images[index]
-                                                .toString())),
+                                    trailing: Padding(
+                                      padding: const EdgeInsets.only(top: 30),
+                                      child: Container(
+                                        height: double.infinity,
+                                        width: 70,
+                                        child: FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Image(
+                                              image: AssetImage(Constants
+                                                  .images[index]
+                                                  .toString())),
+                                        ),
                                       ),
                                     ),
                                   ),

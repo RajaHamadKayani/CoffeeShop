@@ -17,114 +17,112 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          child: Stack(
-            children: [
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                child: FittedBox(
-                  fit: BoxFit.cover,
-                  child: Image.asset("assets/images/splash_bg.png"),
-                ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: Stack(
+          children: [
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              child: FittedBox(
+                fit: BoxFit.cover,
+                child: Image.asset("assets/images/splash_bg.png"),
               ),
-              Positioned(
-                  top: 320,
-                  left: 30,
-                  right: 30,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Welcome\nBack!",
-                        style: GoogleFonts.josefinSans(
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                            color: const Color(0xff230C02)),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ReusableContainer(
-                          hintText: "Email",
-                          controller: loginViewController
-                              .textEditingControllerEmail.value),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ReusableContainer(
-                          hintText: "Password",
-                          controller: loginViewController
-                              .textEditingControllerPassword.value),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          loginViewController.loginApi();
-                          UserPreferences.getToken();
-                        },
-                        child: Container(
-                          height: 47,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(40),
-                              color: const Color(0xff230C02)),
-                          child: Center(
-                            child: Text(
-                              "LOGIN",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xffEEDDC9)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 47,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff230C02), width: 2),
+            ),
+            Positioned(
+                top: 320,
+                left: 30,
+                right: 30,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Welcome\nBack!",
+                      style: GoogleFonts.josefinSans(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xff230C02)),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ReusableContainer(
+                        hintText: "Email",
+                        controller: loginViewController
+                            .textEditingControllerEmail.value),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ReusableContainer(
+                        hintText: "Password",
+                        controller: loginViewController
+                            .textEditingControllerPassword.value),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        loginViewController.loginApi();
+                        UserPreferences.getToken();
+                      },
+                      child: Container(
+                        height: 47,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Create an account",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xff230C02)),
-                            ),
+                            color: const Color(0xff230C02)),
+                        child: Center(
+                          child: Text(
+                            "LOGIN",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xffEEDDC9)),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Center(
-                        child: Text(
-                          "Forgot your password",
-                          style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff230C02),
-                              fontSize: 14),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        height: 47,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color(0xff230C02), width: 2),
+                          borderRadius: BorderRadius.circular(40),
                         ),
-                      )
-                    ],
-                  ))
-            ],
-          ),
+                        child: Center(
+                          child: Text(
+                            "Create an account",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff230C02)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Center(
+                      child: Text(
+                        "Forgot your password",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff230C02),
+                            fontSize: 14),
+                      ),
+                    )
+                  ],
+                ))
+          ],
         ),
       ),
     );

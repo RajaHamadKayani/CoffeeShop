@@ -1,5 +1,5 @@
 import 'package:coffee_shop_app/res/routes_names/route_names.dart';
-import 'package:coffee_shop_app/view/dashboard/dashborar.dart';
+import 'package:coffee_shop_app/view/dashboard/dashboard.dart';
 import 'package:coffee_shop_app/view/home_view/home_view.dart';
 import 'package:coffee_shop_app/view/login_view/login_view.dart';
 import 'package:coffee_shop_app/view/welcome_view/welcome_view.dart';
