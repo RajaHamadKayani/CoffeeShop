@@ -13,6 +13,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   LoginViewController loginViewController = Get.put(LoginViewController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,31 +60,39 @@ class _LoginViewState extends State<LoginView> {
                         hintText: "Password",
                         controller: loginViewController
                             .textEditingControllerPassword.value),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
-                    InkWell(
-                      onTap: () {
-                        loginViewController.loginApi();
-                        UserPreferences.getToken();
-                      },
-                      child: Container(
-                        height: 47,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            color: const Color(0xff230C02)),
-                        child: Center(
-                          child: Text(
-                            "LOGIN",
-                            style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xffEEDDC9)),
-                          ),
+                    Obx(() {
+                      return InkWell(
+                        onTap: () {
+                          loginViewController.loginApi();
+                          UserPreferences.getToken();
+                        },
+                        child: Container(
+                          height: 47,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: const Color(0xff230C02)),
+                          child: loginViewController.loading.value
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: Color(0xffEEDDC9),
+                                  ),
+                                )
+                              : Center(
+                                  child: Text(
+                                    "LOGIN",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xffEEDDC9)),
+                                  ),
+                                ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                     const SizedBox(
                       height: 20,
                     ),
@@ -108,7 +117,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Center(
@@ -116,7 +125,7 @@ class _LoginViewState extends State<LoginView> {
                         "Forgot your password",
                         style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w500,
-                            color: Color(0xff230C02),
+                            color: const Color(0xff230C02),
                             fontSize: 14),
                       ),
                     )
@@ -129,6 +138,7 @@ class _LoginViewState extends State<LoginView> {
   }
 }
 
+// ignore: must_be_immutable
 class ReusableContainer extends StatefulWidget {
   final controller;
   var suffix;

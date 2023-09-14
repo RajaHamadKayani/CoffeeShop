@@ -1,4 +1,5 @@
 import 'package:coffee_shop_app/res/routes_names/route_names.dart';
+import 'package:coffee_shop_app/view/cart_view/cart_view.dart';
 import 'package:coffee_shop_app/view/dashboard/dashboard.dart';
 import 'package:coffee_shop_app/view/favorites_screen/favorites_screen.dart';
 import 'package:coffee_shop_app/view/home_view/home_view.dart';
@@ -49,7 +50,14 @@ class Routes {
               image: "",
             );
           },
-          transition: Transition.leftToRightWithFade)
+          transition: Transition.leftToRightWithFade),
+      GetPage(
+          name: RouteNames.cartRoute,
+          page: () {
+            return CartView(
+              items: [],
+            );
+          })
     ];
   }
 }

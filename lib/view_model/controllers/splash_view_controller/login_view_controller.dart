@@ -7,6 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginViewController extends GetxController {
+  void dispose() {
+    super.dispose();
+    textEditingControllerEmail.dispose();
+    textEditingControllerPassword.dispose();
+  }
+
   UserPreferences userPreferences = UserPreferences();
   final loginRepository = LoginRepository();
   RxBool loading = false.obs;
@@ -24,6 +30,8 @@ class LoginViewController extends GetxController {
 
   loginApi() async {
     try {
+      loading = true.obs;
+
       Map data = {
         "email": textEditingControllerEmail.value.text,
         "password": textEditingControllerPassword.value.text
@@ -32,9 +40,11 @@ class LoginViewController extends GetxController {
         userPreferences
             .saveToken(LoginModelClass.fromJson(value))
             .then((value) {
+          loading = false.obs;
           print("User Data stored successfully");
           Get.toNamed(RouteNames.dashborad);
         }).onError((error, stackTrace) {
+          loading = false.obs;
           print("Error to save user's data");
         });
         Utils.toastMessage("Login", "Login Successfully");
@@ -42,6 +52,7 @@ class LoginViewController extends GetxController {
         Utils.toastMessage("Login", error.toString());
       });
     } catch (e) {
+      loading = false.obs;
       Utils.toastMessage("Login", e.toString());
     }
   }

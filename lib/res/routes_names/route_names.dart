@@ -5,4 +5,5 @@ class RouteNames {
   static const String homeRoute = "/home_route";
   static const String dashborad = "/dashboard";
   static const String favourite = "/favourite";
+  static const String cartRoute = "/cart";
 }

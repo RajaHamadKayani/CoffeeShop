@@ -1,7 +1,7 @@
+import 'package:coffee_shop_app/view/cart_view/cart_view.dart';
 import 'package:coffee_shop_app/view/favorites_screen/favorites_screen.dart';
 import 'package:coffee_shop_app/view/home_view/home_view.dart';
 import 'package:coffee_shop_app/view/profile_screen/profile_screen.dart';
-import 'package:coffee_shop_app/view/shopping_cart_screen/shopping_cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -17,7 +17,9 @@ class _DashBoardState extends State<DashBoard> {
   List<Widget> screens() {
     return [
       const HomeView(),
-      const ShoppingCartScreen(),
+      CartView(
+        items: [],
+      ),
       FavoritesScreen(
         title: "",
         subtitle: "",
