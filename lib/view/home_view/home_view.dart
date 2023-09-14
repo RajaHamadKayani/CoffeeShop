@@ -1,11 +1,10 @@
 import 'package:coffee_shop_app/res/constants/constants.dart';
 import 'package:coffee_shop_app/res/routes_names/route_names.dart';
 import 'package:coffee_shop_app/view/cart_view/cart_view.dart';
+import 'package:coffee_shop_app/view_model/controllers/cart_view_controller/cart_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../utils/utils.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -15,24 +14,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final List<CartItem> items = [];
-  void addToCart(CartItem item) {
-    if (!items.contains(item)) {
-      items.add(item);
-      Utils.toastMessage("Cart", "Items Add to cart successfully!!!");
-    }
-  }
-
-  void removeItem(CartItem item) {
-    if (items.isNotEmpty) {
-      items.remove(item);
-    }
-  }
-
-  void navToCartScreen(BuildContext context) {
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => CartView(items: items)));
-  }
+  CartViewController cartViewController = Get.put(CartViewController());
 
   bool onTap = false;
   String initial = "Popular";
@@ -44,9 +26,9 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           IconButton(
               onPressed: () {
-                Get.toNamed(RouteNames.cartRoute);
+                cartViewController.navToCartView(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.shopping_cart,
                 color: Color(0xffFFF5E9),
               ))
@@ -257,7 +239,8 @@ class _HomeViewState extends State<HomeView> {
                                                       title: title,
                                                       subtitle: subTitle,
                                                       image: image);
-                                                  addToCart(cartItem);
+                                                  cartViewController
+                                                      .addToCart(cartItem);
                                                 },
                                                 child: Container(
                                                   height: 30,
@@ -277,7 +260,8 @@ class _HomeViewState extends State<HomeView> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsets.only(
+                                                            const EdgeInsets
+                                                                .only(
                                                                 top: 10,
                                                                 left: 5),
                                                         child: Text(
