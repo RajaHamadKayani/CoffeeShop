@@ -7,17 +7,30 @@ import 'package:get/get.dart';
 class CartViewController extends GetxController {
   RxList<CartItem> items = <CartItem>[].obs;
   void addToCart(CartItem cartItem) {
-    if (!items.contains(cartItem)) {
+    final existingItem = items.firstWhere(
+      (item) => item.title == cartItem.title,
+      orElse: () => null!,
+    );
+
+    if (existingItem != null) {
+      existingItem.quantity += 1; // Increase quantity if item already exists
+    } else {
       items.add(cartItem);
-      Utils.toastMessage("Coffee Shop", "Item added to cart successfully!!!");
     }
   }
 
   void removeFromCart(CartItem cartItem) {
-    if (items.contains(cartItem)) {
-      items.remove(cartItem);
-      Utils.toastMessage(
-          "Coffee Shop", "Item removed from cart successfully!!!");
+    final existingItem = items.firstWhere(
+      (item) => item.title == cartItem.title,
+      orElse: () => null!,
+    );
+
+    if (existingItem != null) {
+      if (existingItem.quantity > 1) {
+        existingItem.quantity -= 1; // Decrease quantity if > 1
+      } else {
+        items.remove(existingItem); // Remove item if quantity is 1
+      }
     }
   }
 

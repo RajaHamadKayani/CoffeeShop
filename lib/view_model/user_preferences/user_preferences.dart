@@ -3,10 +3,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {
   LoginModelClass loginModelClass = LoginModelClass();
-  Future<bool> saveToken(LoginModelClass loginModelClass) async {
+  Future<bool> saveToken(var token) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString("token", loginModelClass.token.toString());
-    return true;
+    sharedPreferences.setString("token", token);
+    return token;
   }
 
   static Future<LoginModelClass> getToken() async {

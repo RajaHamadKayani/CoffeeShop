@@ -1,9 +1,8 @@
-import 'package:coffee_shop_app/res/constants/constants.dart';
+import 'package:coffee_shop_app/utils/utils.dart';
 import 'package:coffee_shop_app/view_model/controllers/cart_view_controller/cart_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 class CartView extends StatefulWidget {
   final List<CartItem> items;
@@ -188,6 +187,9 @@ class _CartViewState extends State<CartView>
                                               onTap: () {
                                                 cartViewController
                                                     .removeFromCart(cartedItem);
+                                                Utils.toastMessage(
+                                                    "Coffee Shop",
+                                                    "${subtitle} is removed from cart successfully");
                                                 print(
                                                     "Length after removing specific item: ${cartViewController.items.length}");
                                               },
@@ -228,6 +230,18 @@ class _CartViewState extends State<CartView>
                                                         Icons.shopping_cart,
                                                         color:
                                                             Color(0xffEEDCC6),
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    Text(
+                                                      " ${cartedItem.quantity}",
+                                                      style:
+                                                          GoogleFonts.openSans(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white,
                                                       ),
                                                     )
                                                   ],
@@ -272,6 +286,11 @@ class CartItem {
   final String title;
   final String subtitle;
   final String image;
+  int quantity;
 
-  CartItem({required this.title, required this.subtitle, required this.image});
+  CartItem(
+      {required this.title,
+      required this.subtitle,
+      required this.image,
+      this.quantity = 1});
 }

@@ -1,5 +1,6 @@
 import 'package:coffee_shop_app/res/constants/constants.dart';
 import 'package:coffee_shop_app/res/routes_names/route_names.dart';
+import 'package:coffee_shop_app/utils/utils.dart';
 import 'package:coffee_shop_app/view/cart_view/cart_view.dart';
 import 'package:coffee_shop_app/view_model/controllers/cart_view_controller/cart_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -199,7 +200,7 @@ class _HomeViewState extends State<HomeView> {
                                   child: ListTile(
                                     title: Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 10, left: 18),
+                                          top: 10, left: 1),
                                       child: Text(
                                         title,
                                         style: GoogleFonts.poppins(
@@ -210,7 +211,7 @@ class _HomeViewState extends State<HomeView> {
                                     ),
                                     subtitle: Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 10, left: 18),
+                                          top: 10, left: 1),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -241,6 +242,9 @@ class _HomeViewState extends State<HomeView> {
                                                       image: image);
                                                   cartViewController
                                                       .addToCart(cartItem);
+                                                  Utils.toastMessage(
+                                                      "Coffee Shop",
+                                                      "$subTitle added to cart successfully");
                                                 },
                                                 child: Container(
                                                   height: 30,
